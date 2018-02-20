@@ -1,0 +1,3 @@
+class SeriesRound < ApplicationRecord
+
+end

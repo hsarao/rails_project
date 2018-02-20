@@ -1,6 +1,7 @@
 require 'json'
 require 'rubygems'
 require 'net/http'
+
 Series.delete_all
 Round.delete_all
 Match.delete_all
@@ -16,29 +17,32 @@ puts seriesName.size #seriesName has 15 length becuase of 15chars in series name
 pp roundsArray.size
 puts matchArray.size
 #puts matchArray[0]["date"]
-Series.create(name: seriesName)
+series1 = Series.create(name: seriesName)
 
 i = 0
 loop do
   singleRoundArray = roundsArray[i]
-  Round.create(name: singleRoundArray["name"])
+  round1 = Round.create(name: singleRoundArray["name"])
+  SeriesRoundJoin.create(series: series1, round: round1)
   j = 0
   loop do
     singleMatchArray = singleRoundArray["matches"]
     Match.create(date: singleMatchArray[j]["date"], score1: singleMatchArray[j]["score1"],
                  score2: singleMatchArray[j]["score2"])
+    teams = singleMatchArray["team1"]
     j += 1
     if j == singleMatchArray.size
       break
     end
-   end
+  end
   i += 1
   if i == roundsArray.size
     break
-end
+  end
 end
 
-puts Match.count
+puts teams.count
+
 
 
 

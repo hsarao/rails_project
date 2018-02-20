@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216031817) do
+ActiveRecord::Schema.define(version: 20180220205703) do
 
   create_table "matches", force: :cascade do |t|
     t.date "date"
@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20180216031817) do
 
   create_table "series", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "series_rounds", force: :cascade do |t|
-    t.string "seriesreferences"
-    t.string "roundsreferences"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -6,6 +6,7 @@ Series.delete_all
 Round.delete_all
 Match.delete_all
 Team.delete_all
+TeamsPlayingMatch.delete_all
 file = File.read("#{Rails.root}/db/it.1.json")
 series = JSON.parse(file)
 seriesName = series["name"]
@@ -32,13 +33,15 @@ loop do
   allTeam1Array =  singleMatchArray[j]["team1"]
     allTeam2Array =  singleMatchArray[j]["team2"]
 
-  Team.find_or_create_by(key: allTeam1Array["key"], name: allTeam1Array["name"], code: allTeam1Array["code"])
+   team = Team.find_or_create_by(key: allTeam1Array["key"], name: allTeam1Array["name"], code: allTeam1Array["code"])
     #team1 is creating all the teams
  # Team.find_or_create_by(key: allTeam2Array["key"], name: allTeam2Array["name"], code: allTeam2Array["code"])
 
-    Match.create(date: singleMatchArray[j]["date"], score1: singleMatchArray[j]["score1"],
+    match = Match.create(date: singleMatchArray[j]["date"], score1: singleMatchArray[j]["score1"],
                  score2: singleMatchArray[j]["score2"])
 #     teams = singleMatchArray["team1"]
+    TeamsPlayingMatch.create(match: match, team: team);
+    MatchesInRound.create(match: match, round: round1)
     j += 1
     if j == singleMatchArray.size
       break

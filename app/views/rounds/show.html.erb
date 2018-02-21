@@ -5,5 +5,9 @@
   <%= @round.name %>
 </p>
 
+<p>
+  <strong>Matches:</strong><br>
+  <%= @round.matches.pluck(:date).join("\n") %>
+</p>
 <%= link_to 'Edit', edit_round_path(@round) %> |
 <%= link_to 'Back', rounds_path %>

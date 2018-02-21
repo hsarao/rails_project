@@ -3,10 +3,11 @@ require 'rubygems'
 require 'net/http'
 
 Series.delete_all
+TeamsPlayingMatch.delete_all
+Team.delete_all
+MatchesInRound.delete_all
 Round.delete_all
 Match.delete_all
-Team.delete_all
-TeamsPlayingMatch.delete_all
 file = File.read("#{Rails.root}/db/it.1.json")
 series = JSON.parse(file)
 seriesName = series["name"]
@@ -26,6 +27,7 @@ i = 0
 loop do
   singleRoundArray = roundsArray[i]
   round1 = Round.create(name: singleRoundArray["name"])
+  RoundsInSeries.create(round: round1, series: series1)
 
   j = 0
   loop do

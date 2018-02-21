@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221222850) do
+ActiveRecord::Schema.define(version: 20180221232643) do
 
   create_table "matches", force: :cascade do |t|
     t.date "date"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20180221222850) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rounds_in_series", force: :cascade do |t|
+    t.integer "round_id"
+    t.integer "series_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["round_id"], name: "index_rounds_in_series_on_round_id"
+    t.index ["series_id"], name: "index_rounds_in_series_on_series_id"
   end
 
   create_table "series", force: :cascade do |t|

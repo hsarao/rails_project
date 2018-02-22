@@ -10,6 +10,14 @@
     h1 {
       color: maroon;
     }
+      a:link, a:visited
+      {
+        color: black;
+      }
+      a:hover{
+        font-size: 14px;
+        background-color: #BBBBBB;
+      }
   </style>
 </head>
 <body>
@@ -53,7 +61,7 @@
     <tbody>
   <% @round.matches .each do |t| %>
     <tr>
-      <td><%= link_to t.date, "#" %></td>
+      <td><%= link_to t.date, t %></td>
     <% t.teams .each do |team| %>
         <td><%= team.name %></td>
 

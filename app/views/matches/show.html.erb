@@ -1,23 +1,76 @@
 <p id="notice"><%= notice %></p>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body{
+      background-image: url(/assets/most_expensive_players.png);
+      background-size: 100%;
 
-<p>
-  <strong>Date:</strong>
-  <%= @match.date %>
-</p>
+    }
+    .align{
+      color:red;
+    }
+    h1 {
+      color: maroon;
+    }
+    a:link, a:visited
+    {
+      color: darkblue;
+      font-size: 12px;
+    }
+    a:hover
+    {
+      color: #730E15;
+      font-size: 14px;
+      background-color: darkseagreen;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">The Soccer World</a>
 
-<p>
-  <strong>Score1:</strong>
-  <%= @match.score1 %>
-</p>
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h1><img src=/assets/32.png height="100px">Serie A 2015/16</h1>
 
-<p>
-  <strong>Score2:</strong>
-  <%= @match.score2 %>
-</p>
-<p>
-  <strong>Teams:</strong>
-  <%= @match.teams.pluck(:name).join(', ') %>
-</p>
 
-<%= link_to 'Edit', edit_match_path(@match) %> |
-<%= link_to 'Back', matches_path %>
+<table class="table">
+  <thead>
+  <th scope="col">Round</th>
+  <th scope="col"><%= @match.round.first.name %></th>
+  </thead>
+</table>
+  <tbody>
+  <tr class="align">
+    <h2>Date <%= @match.date %></h2>
+  </tr>
+  </tbody>
+  <br>
+  <h3><%= @match.teams.first.name %>&nbsp;&nbsp;&nbsp;&nbsp;<img src=/assets/VS.png height="100px">
+    &nbsp;&nbsp;&nbsp;&nbsp;<%= @match.teams.last.name %></h3>
+<h3><%= @match.score1 %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/32.png" height="80px">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @match.score2 %></h3>
+<% string = @match.round.first.id.to_s
+url = "http://localhost:3000/rounds/" + string%>
+<%= link_to 'Back', url %>
+</div>
+</body>

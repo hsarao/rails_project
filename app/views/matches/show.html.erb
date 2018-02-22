@@ -15,8 +15,8 @@
   <%= @match.score2 %>
 </p>
 <p>
-  <strong>Team 1:</strong>
-  <%= @match.teams.pluck(:name) %>
+  <strong>Teams:</strong>
+  <%= @match.teams.pluck(:name).join(', ') %>
 </p>
 
 <%= link_to 'Edit', edit_match_path(@match) %> |

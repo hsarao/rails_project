@@ -4,6 +4,12 @@
   <strong>Name:</strong>
   <%= @series.name %>
 </p>
+<br>
+  <strong>Rounds:</strong></br>
+  <% @series.rounds.pluck(:name).each do |t| %>
+    <%= t %></br>
+    <% end %>
+</p>
 
 <%= link_to 'Edit', edit_series_path(@series) %> |
 <%= link_to 'Back', series_index_path %>

@@ -2,12 +2,14 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @round.name %>
+  <%= link_to @round.name, rounds_path %>
 </p>
 
 <p>
-  <strong>Matches:</strong><br>
-  <%= @round.matches.pluck(:date).join("\n") %>
+  <strong>Matches:</strong><br><br>
+  <% @round.matches.pluck(:date).each do |t| %>
+    <%= link_to t, "#" %></br>
+  <% end %>
 </p>
 <%= link_to 'Edit', edit_round_path(@round) %> |
 <%= link_to 'Back', rounds_path %>

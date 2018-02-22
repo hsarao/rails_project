@@ -2,6 +2,7 @@ require 'json'
 require 'rubygems'
 require 'net/http'
 
+RoundsInSeries.delete_all
 Series.delete_all
 TeamsPlayingMatch.delete_all
 Team.delete_all
@@ -37,12 +38,13 @@ loop do
 
    team = Team.find_or_create_by(key: allTeam1Array["key"], name: allTeam1Array["name"], code: allTeam1Array["code"])
     #team1 is creating all the teams
- # Team.find_or_create_by(key: allTeam2Array["key"], name: allTeam2Array["name"], code: allTeam2Array["code"])
+   team2 = Team.find_or_create_by(key: allTeam2Array["key"], name: allTeam2Array["name"], code: allTeam2Array["code"])
 
     match = Match.create(date: singleMatchArray[j]["date"], score1: singleMatchArray[j]["score1"],
                  score2: singleMatchArray[j]["score2"])
 #     teams = singleMatchArray["team1"]
     TeamsPlayingMatch.create(match: match, team: team);
+    TeamsPlayingMatch.create(match: match, team: team2);
     MatchesInRound.create(match: match, round: round1)
     j += 1
     if j == singleMatchArray.size

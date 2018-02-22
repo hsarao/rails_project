@@ -1,23 +1,65 @@
 <p id="notice"><%= notice %></p>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body{
+      background-image: url(/assets/most_expensive_players.png);
 
-<h1>Rounds</h1>
+      background-size: 100%;
 
-<table>
+    }
+    h1 {
+      color: maroon;
+    }
+      a:link, a:visited
+      {
+        color: darkblue;
+        font-size: 12px;
+      }
+      a:hover
+      {
+        color: #730E15;
+        font-size: 14px;
+        background-color: darkseagreen;
+      }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">The Soccer World</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+  </ul>
+</div>
+</nav>
+<div class="container">
+  <h1><img src=/assets/32.png height="100px">Serie A 2015/16</h1>
+  <h1>Rounds</h1>
+
+<table class="table">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
   </thead>
 
   <tbody>
     <% @rounds.each do |round| %>
       <tr>
-        <td><%= link_to round.name, round %></td>
-
-        <td><%= link_to 'Show', round %></td>
-        <td><%= link_to 'Edit', edit_round_path(round) %></td>
-        <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="customizeFont"><b><%= link_to round.name, round %></b></td>
+        <!--<td><%= link_to 'Show', round %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -26,3 +68,5 @@
 <br>
 
 <%= link_to 'New Round', new_round_path %>
+</div>
+</body>

@@ -64,7 +64,7 @@
     <% end %>
   </tbody>
 </table>
-  <%= will_paginate @rounds %>
+  <%= will_paginate @rounds, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, :list_classes => ['pagination']%>
 
 <br>
 

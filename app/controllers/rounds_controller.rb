@@ -4,7 +4,7 @@ class RoundsController < ApplicationController
   # GET /rounds
   # GET /rounds.json
   def index
-    @rounds = Round.all
+    @rounds = Round.all.paginate(:page => params[:page], :per_page => 9)
   end
 
   # GET /rounds/1
